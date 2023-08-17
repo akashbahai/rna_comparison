@@ -18,10 +18,10 @@ def renumber_residues(structure, fasta_sequence, pdb_file):
         if residue.id in residue_id_map:
             residue.id = (' ', residue_id_map[residue.id], residue.id[2])
 
-    pdbio = PDBIO()
+    '''pdbio = PDBIO()
     pdbio.set_structure(structure)
     output_pdb_file = pdb_file.replace(".pdb", "_renum.pdb")
-    pdbio.save(output_pdb_file)
+    pdbio.save(output_pdb_file)'''
 
 def calculate_fnat(native_structure, model_structure, fasta_sequence, distance_cutoff=5.0):
     # Create PDBParser objects for both native and model structures
@@ -33,7 +33,7 @@ def calculate_fnat(native_structure, model_structure, fasta_sequence, distance_c
     renumber_residues(native, fasta_sequence, native_structure)
     renumber_residues(model, fasta_sequence, model_structure)
     
-# Create lists of atoms for native and model structures
+    # Create lists of atoms for native and model structures
     native_atoms = [atom for atom in native.get_atoms()]
     model_atoms = [atom for atom in model.get_atoms()]
     
